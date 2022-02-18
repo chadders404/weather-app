@@ -24,7 +24,7 @@ let days = [
 let day = days[currentTime.getDay()];
 
 let h3 = document.querySelector("h3");
-h3.innerHTML = `Your local time: ${day} ${hours}:${minutes}`;
+h3.innerHTML = `${day} ${hours}:${minutes}`;
 
 //function switchTempToCentigrade (event) {
 //event.preventDefault();
@@ -71,11 +71,13 @@ function showTemperature(response) {
   let temperatureElement = document.querySelector("#localTemp");
   temperatureElement.innerHTML = `${temperature}`;
   if (temperature <= 10) {
-    let background = document.getElementById("container").style.backgroundImage;
-    background =
-      "url `https://scitechdaily.com/images/New-Hubble-Image-Shows-Part-of-the-Large-Magellanic-Cloud.jpg`"; //test image
+    document.getElementById(
+      "container"
+    ).style.backgroundImage = `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/025/955/original/FreeVector-Rain-Background.jpg?1643503251"`;
   } else {
-    alert("it is warm");
+    document.getElementById(
+      "container"
+    ).style.backgroundImage = `url("https://www.hinghamanchor.com/wp-content/uploads/2021/05/marek-szturc-2s3fI3M1lO0-unsplash-scaled.jpg"`;
   }
 }
 

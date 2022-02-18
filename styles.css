@@ -1,5 +1,5 @@
 body {
-  color: #fff;
+  color: white;
   text-align: center;
   font-family: Helvetica, sans-serif;
 }
@@ -8,6 +8,7 @@ body {
   text-align: center;
   margin: 0 auto;
   margin-top: 50px;
+  margin-bottom: 15px;
   padding: 30px;
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/025/955/original/FreeVector-Rain-Background.jpg?1643503251");
   background-size: cover;
@@ -59,6 +60,20 @@ a {
   color: white;
   text-decoration: none;
 }
+ul {
+  padding: 0px;
+}
+li {
+  margin: 0 auto;
+  padding: 0px;
+  list-style-type: none;
+}
+a.credit {
+  color: rgb(20, 100, 200);
+  font-size: 15px;
+  display: block;
+}
+
 /*a:hover {
         color: orange;
       }
