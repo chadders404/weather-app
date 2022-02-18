@@ -70,6 +70,13 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#localTemp");
   temperatureElement.innerHTML = `${temperature}`;
+  if (temperature <= 10) {
+    let background = document.getElementById("container").style.backgroundImage;
+    background =
+      "url `https://scitechdaily.com/images/New-Hubble-Image-Shows-Part-of-the-Large-Magellanic-Cloud.jpg`"; //test image
+  } else {
+    alert("it is warm");
+  }
 }
 
 function showLocationName(response) {
