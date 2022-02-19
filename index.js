@@ -1,4 +1,4 @@
-//Time:
+/*js Time:
 let currentTime = new Date();
 let date = currentTime.getDate();
 
@@ -24,7 +24,7 @@ let days = [
 let day = days[currentTime.getDay()];
 
 let h3 = document.querySelector("h3");
-h3.innerHTML = `${day} ${hours}:${minutes}`;
+h3.innerHTML = `${day} ${hours}:${minutes}`; */
 
 //function switchTempToCentigrade (event) {
 //event.preventDefault();
@@ -65,6 +65,30 @@ function showPosition(position) {
   axios.get(`${apiLocationUrl}&appid=${apiKey}`).then(showLocationName);
 }
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  return `${day} ${hours}:${minutes}`;
+}
+
 function showTemperature(response) {
   console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
@@ -77,8 +101,10 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   humidityElement.innerHTML = `${humidity}`;
   let windElement = document.querySelector("#wind");
-  let windSpeed = response.data.wind.speed;
+  let windSpeed = Math.round(response.data.wind.speed);
   windElement.innerHTML = `${windSpeed}`;
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   if (temperature <= 10) {
     document.getElementById(
       "container"
