@@ -15,20 +15,59 @@ body {
   border-radius: 20px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
+
+.container2 {
+  margin: 65px;
+}
+
+.large-symbol {
+  font-size: 250px;
+}
+
 form {
   padding: 30px;
 }
-.title {
-  padding: 140px;
+.left-col {
+  margin: 150px;
 }
-.title .location {
+.left-col .location {
+  text-align: left;
+  position: relative;
+  left: 75px;
+  top: 50px;
   font-size: 60px;
   font-weight: 100;
 }
 
-.title .localTemp {
-  font-size: 130px;
+.left-col .localTemp {
+  text-align: left;
+  position: relative;
+  left: 75px;
+  top: 50px;
+  font-size: 140px;
   font-weight: 500;
+}
+
+h3 {
+  text-align: right;
+  font-size: 25px;
+  position: relative;
+  top: 150px;
+}
+
+ul {
+  position: relative;
+  top: 28px;
+  padding: 0px;
+}
+li {
+  text-align: right;
+  font-size: 25px;
+  position: relative;
+  top: 60px;
+  margin: 0 auto;
+  padding: 0px;
+  list-style-type: none;
 }
 
 h5 {
@@ -60,14 +99,7 @@ a {
   color: white;
   text-decoration: none;
 }
-ul {
-  padding: 0px;
-}
-li {
-  margin: 0 auto;
-  padding: 0px;
-  list-style-type: none;
-}
+
 a.credit {
   color: rgb(20, 100, 200);
   font-size: 15px;
