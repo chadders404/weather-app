@@ -68,6 +68,9 @@ function showPosition(position) {
 function showTemperature(response) {
   console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
+  let descriptionElement = document.querySelector("#descriptionElement");
+  let description = response.data.weather[0].description;
+  descriptionElement.innerHTML = `${description}`;
   let temperatureElement = document.querySelector("#localTemp");
   temperatureElement.innerHTML = `${temperature}`;
   if (temperature <= 10) {
