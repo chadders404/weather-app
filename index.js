@@ -68,11 +68,17 @@ function showPosition(position) {
 function showTemperature(response) {
   console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("#localTemp");
   let descriptionElement = document.querySelector("#descriptionElement");
   let description = response.data.weather[0].description;
   descriptionElement.innerHTML = `${description}`;
-  let temperatureElement = document.querySelector("#localTemp");
   temperatureElement.innerHTML = `${temperature}`;
+  let humidityElement = document.querySelector("#humidity");
+  let humidity = response.data.main.humidity;
+  humidityElement.innerHTML = `${humidity}`;
+  let windElement = document.querySelector("#wind");
+  let windSpeed = response.data.wind.speed;
+  windElement.innerHTML = `${windSpeed}`;
   if (temperature <= 10) {
     document.getElementById(
       "container"
