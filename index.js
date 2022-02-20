@@ -1,31 +1,3 @@
-/*js Time:
-let currentTime = new Date();
-let date = currentTime.getDate();
-
-let hours = currentTime.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-
-let minutes = currentTime.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[currentTime.getDay()];
-
-let h3 = document.querySelector("h3");
-h3.innerHTML = `${day} ${hours}:${minutes}`; */
-
 //function switchTempToCentigrade (event) {
 //event.preventDefault();
 //let scan = document.querySelector("#localTemp");
@@ -89,6 +61,13 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+//Icon formatting - the idea is I will write an if statement for each Open Weather "icon" code, so it will return a different Font Awesome icon.
+
+function formatSymbol(response) {
+  if (response[0].icon === "04n");
+  return `<i class="fa-solid fa-cloud"></i>`; // <---- This icon displays fine on the Font Awesome website, but displays as a square on my weather app.
+}
+
 function showTemperature(response) {
   console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
@@ -105,6 +84,8 @@ function showTemperature(response) {
   windElement.innerHTML = `${windSpeed}`;
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  let largeSymbolElement = document.querySelector("#largeSymbol");
+  largeSymbolElement.innerHTML = formatSymbol(response.data.weather);
   if (temperature <= 10) {
     document.getElementById(
       "container"
