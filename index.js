@@ -61,11 +61,35 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-//Icon formatting - the idea is I will write an if statement for each Open Weather "icon" code, so it will return a different Font Awesome icon.
-
 function formatSymbol(response) {
-  if (response[0].icon === "04n");
-  return `<i class="fa-solid fa-cloud"></i>`; // <---- This icon displays fine on the Font Awesome website, but displays as a square on my weather app.
+  if (response[0].icon === "01d") {
+    return `<i class="fas fa-sun"></i>`;
+  } else if (response[0].icon === "01n") {
+    return `<i class="fas fa-moon"></i>`;
+  } else if (response[0].icon === "02d") {
+    return `<i class="fas fa-cloud-sun"></i>`;
+  } else if (response[0].icon === "02n") {
+    return `<i class="fas fa-cloud-moon"></i>`;
+  } else if (
+    response[0].icon === "04n" ||
+    response[0].icon === "04d" ||
+    response[0].icon === "03n" ||
+    response[0].icon === "03d"
+  ) {
+    return `<i class="fas fa-cloud"></i>`;
+  } else if (response[0].icon === "09n" || response[0].icon === "09d") {
+    return `<i class="fas fa-cloud-showers-heavy"></i>`;
+  } else if (response[0].icon === "10n") {
+    return `<i class="fas fa-cloud-moon-rain"></i>`;
+  } else if (response[0].icon === "10d") {
+    return `<i class="fas fa-cloud-sun-rain"></i>`;
+  } else if (response[0].icon === "11n" || response[0].icon === "11d") {
+    return `<i class="fas fa-poo-storm"></i>`;
+  } else if (response[0].icon === "13n" || response[0].icon === "13d") {
+    return `<i class="fas fa-snowflake"></i>`;
+  } else if (response[0].icon === "50n" || response[0].icon === "50d") {
+    return `<i class="fas fa-smog"></i>`;
+  }
 }
 
 function showTemperature(response) {
