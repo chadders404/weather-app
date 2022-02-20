@@ -92,6 +92,38 @@ function formatSymbol(response) {
   }
 }
 
+function formatBackground(response) {
+  if (response[0].icon === "01d") {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/590/original/01d.jpg?1645326234"`;
+  } else if (response[0].icon === "01n") {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/591/original/01n.jpg?1645326270"`;
+  } else if (response[0].icon === "02d") {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/592/original/02d.jpg?1645326311"`;
+  } else if (response[0].icon === "02n") {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/593/original/02n.jpg?1645326349"`;
+  } else if (
+    response[0].icon === "04n" ||
+    response[0].icon === "04d" ||
+    response[0].icon === "03n" ||
+    response[0].icon === "03d"
+  ) {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/594/original/03d03n04d04n.jpg?1645326386"`;
+  } else if (
+    response[0].icon === "09n" ||
+    response[0].icon === "09d" ||
+    response[0].icon === "10n" ||
+    response[0].icon === "10d"
+  ) {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/587/original/09d09n10d10n.jpg?1645325807"`;
+  } else if (response[0].icon === "11n" || response[0].icon === "11d") {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/595/original/11d11n.jpg?1645326436"`;
+  } else if (response[0].icon === "13n" || response[0].icon === "13d") {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/589/original/13d13n.jpg?1645326072"`;
+  } else if (response[0].icon === "50n" || response[0].icon === "50d") {
+    return `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/596/original/50d50n.jpg?1645326517"`;
+  }
+}
+
 function showTemperature(response) {
   console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
@@ -110,15 +142,9 @@ function showTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   let largeSymbolElement = document.querySelector("#largeSymbol");
   largeSymbolElement.innerHTML = formatSymbol(response.data.weather);
-  if (temperature <= 10) {
-    document.getElementById(
-      "container"
-    ).style.backgroundImage = `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/025/955/original/FreeVector-Rain-Background.jpg?1643503251"`;
-  } else {
-    document.getElementById(
-      "container"
-    ).style.backgroundImage = `url("https://www.hinghamanchor.com/wp-content/uploads/2021/05/marek-szturc-2s3fI3M1lO0-unsplash-scaled.jpg"`;
-  }
+  document.getElementById("container").style.backgroundImage = formatBackground(
+    response.data.weather
+  );
 }
 
 function showLocationName(response) {
