@@ -1,14 +1,15 @@
-//function switchTempToCentigrade (event) {
-//event.preventDefault();
-//let scan = document.querySelector("#localTemp");
-//scan.innerHTML = "17"
-//}
+function switchTempToCentigrade(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#localTemp");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
 
-//function switchTempToFahrenheit (event) {
-//event.preventDefault();
-//let scan = document.querySelector("#localTemp");
-//scan.innerHTML = "66"
-//}
+function switchTempToFahrenheit(event) {
+  event.preventDefault();
+  fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#localTemp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
 
 function search(event) {
   event.preventDefault();
@@ -126,6 +127,9 @@ function formatBackground(response) {
 
 function showTemperature(response) {
   console.log(response.data);
+
+  celsiusTemp = response.data.main.temp;
+
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#localTemp");
   let descriptionElement = document.querySelector("#descriptionElement");
@@ -156,11 +160,13 @@ function showLocationName(response) {
 
 navigator.geolocation.getCurrentPosition(showPosition);
 
-//let centigrade = document.querySelector("#centigrade");
-//centigrade.addEventListener("click", switchTempToCentigrade);
+let celsiusTemp = null;
 
-//let fahrenheit = document.querySelector("#fahrenheit");
-//fahrenheit.addEventListener("click", switchTempToFahrenheit);
+let centigrade = document.querySelector("#centigrade");
+centigrade.addEventListener("click", switchTempToCentigrade);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", switchTempToFahrenheit);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
