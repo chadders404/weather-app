@@ -126,3 +126,8 @@ a:hover {
 a .link {
   color: white;
 }
+
+small {
+  position: relative;
+  top: 130px;
+}
