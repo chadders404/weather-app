@@ -62,6 +62,29 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecasts() {
+  let forecastsElement = document.querySelector("#forecasts");
+
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+
+  let forecastsHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastsHTML =
+      forecastsHTML +
+      `<div class="col-2">
+            <div class="card bg-white p-3 mb-2 text-dark" style="width: flex">
+              <div class="card-body">
+                <h5 class="Symbol"><i class="fas fa-cloud"></i></h5>
+                <h5 class="Tomorrow">${day}</h5>
+                <p class="meanTemp"><scan class= "tempMin">12</scan>-<scan class= "tempMax">15°</scan></p>
+              </div>
+            </div>
+          </div>`;
+  });
+  forecastsHTML = forecastsHTML + `</div>`;
+  forecastsElement.innerHTML = forecastsHTML;
+}
+
 function formatSymbol(response) {
   if (response[0].icon === "01d") {
     return `<i class="fas fa-sun"></i>`;
@@ -170,3 +193,5 @@ fahrenheit.addEventListener("click", switchTempToFahrenheit);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
+
+displayForecasts();
