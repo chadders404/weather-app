@@ -62,24 +62,58 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecasts() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+function getForecasts(coordinates) {
+  let apiKey = "74284988913c466762956594e85e02f8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecasts);
+}
+
+function displayForecasts(response) {
+  let forecastDays = response.data.daily;
+  console.log(response.data.daily);
   let forecastsElement = document.querySelector("#forecasts");
 
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
-
   let forecastsHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastsHTML =
-      forecastsHTML +
-      `<div class="col-2">
+  forecastDays.forEach(function (forecastDays, index) {
+    if (index < 6) {
+      let tempMin = Math.round(forecastDays.temp.min);
+      let tempMax = Math.round(forecastDays.temp.max);
+
+      //let forecastSymbol = "#Symbol";
+      //forecastSymbol.innerHTML = formatSymbol(forecastDays.weather);
+
+      forecastsHTML =
+        forecastsHTML +
+        `<div class="col-2">
             <div class="card bg-white p-3 mb-2 text-dark" style="width: flex">
               <div class="card-body">
-                <h5 class="Symbol"><i class="fas fa-cloud"></i></h5>
-                <h5 class="Tomorrow">${day}</h5>
-                <p class="meanTemp"><scan class= "tempMin">12</scan>-<scan class= "tempMax">15°</scan></p>
+                <h5 class="Symbol">
+                <img src= "http://openweathermap.org/img/wn/${
+                  forecastDays.weather[0].icon
+                }@2x.png"
+                alt = ""
+                width = "45" /></h5>
+                <h5 class="forecastDay">${formatDay(forecastDays.dt)}</h5>
+                <p class="forecastTemp"><scan class= "tempMin">${tempMin}°</scan>   <strong class= "tempMax">${tempMax}°</strong></p>
               </div>
             </div>
           </div>`;
+    }
   });
   forecastsHTML = forecastsHTML + `</div>`;
   forecastsElement.innerHTML = forecastsHTML;
@@ -172,6 +206,7 @@ function showTemperature(response) {
   document.getElementById("container").style.backgroundImage = formatBackground(
     response.data.weather
   );
+  getForecasts(response.data.coord);
 }
 
 function showLocationName(response) {

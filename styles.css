@@ -84,9 +84,17 @@ li:first-letter {
   text-transform: capitalize;
 }
 
-.meanTemp {
-  color: black;
-  font-size: 15px;
+.forecastDay {
+  color: rgba(80, 80, 80, 1);
+}
+
+.forecastTemp {
+  color: rgba(80, 80, 80, 1);
+  font-size: 20px;
+}
+
+.tempMax {
+  color: rgba(80, 80, 80, 1);
 }
 .col-sm {
   color: #808eb4;
