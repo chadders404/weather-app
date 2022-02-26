@@ -90,7 +90,7 @@ function displayForecasts(response) {
 
   let forecastsHTML = `<div class="row">`;
   forecastDays.forEach(function (forecastDays, index) {
-    if (index < 6) {
+    if (index > 0 && index < 7) {
       let tempMin = Math.round(forecastDays.temp.min);
       let tempMax = Math.round(forecastDays.temp.max);
 
@@ -99,7 +99,7 @@ function displayForecasts(response) {
 
       forecastsHTML =
         forecastsHTML +
-        `<div class="col-2">
+        `<div class="col">
             <div class="card bg-white p-3 mb-2 text-dark" style="width: flex">
               <div class="card-body">
                 <h5 class="Symbol">
