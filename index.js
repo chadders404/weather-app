@@ -27,7 +27,6 @@ function search(event) {
 }
 
 function showPosition(position) {
-  console.log(position);
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let units = "metric";
@@ -85,7 +84,7 @@ function getForecasts(coordinates) {
 
 function displayForecasts(response) {
   let forecastDays = response.data.daily;
-  console.log(response.data.daily);
+
   let forecastsElement = document.querySelector("#forecasts");
 
   let forecastsHTML = `<div class="row">`;
@@ -183,8 +182,6 @@ function formatBackground(response) {
 }
 
 function showTemperature(response) {
-  console.log(response.data);
-
   celsiusTemp = response.data.main.temp;
 
   let temperature = Math.round(response.data.main.temp);
@@ -210,8 +207,6 @@ function showTemperature(response) {
 }
 
 function showLocationName(response) {
-  console.log(response.data.name);
-
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
 }
